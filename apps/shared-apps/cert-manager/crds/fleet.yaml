@@ -1,0 +1,4 @@
+defaultNamespace: cert-manager
+
+labels:
+  app: cert-manager-crds

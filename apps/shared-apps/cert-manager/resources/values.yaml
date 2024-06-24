@@ -1,0 +1,12 @@
+clusterIssuers: 
+- name: issuer-prod
+
+certs: []
+# - name: example-cert
+#   namespace: example-namespace
+#   commonName: www.example.com
+#   secretName: example-cert
+#   dnsNames:
+#   - "*.example.com"
+#   issuerType: ClusterIssuer
+#   issuerName: example-issuer

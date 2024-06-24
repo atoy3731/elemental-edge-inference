@@ -1,0 +1,10 @@
+defaultNamespace: kube-system
+
+labels:
+  app: elemental-kubevip-cloud-provider-config
+
+helm:
+  chart: ./chart
+  values:
+    rangeGlobal: 10.0.10.180-10.0.10.181
+  takeOwnership: true

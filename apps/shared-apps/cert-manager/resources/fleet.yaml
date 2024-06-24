@@ -1,0 +1,15 @@
+defaultNamespace: cert-manager
+
+labels:
+  app: cert-manager-resources
+
+helm:
+  chart: ./chart
+  releaseName: cert-manager-resources
+  valuesFiles:
+  - values.yaml
+
+dependsOn:
+  - selector:
+      matchLabels:
+        app: cert-manager-cert-manager

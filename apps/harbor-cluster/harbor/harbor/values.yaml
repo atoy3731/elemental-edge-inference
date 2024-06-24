@@ -1,0 +1,44 @@
+externalURL: https://harbor.rgov.xyz
+harborAdminPassword: Abcdef12345!
+
+persistence:
+  persistentVolumeClaim:
+    chartmuseum:
+      size: 1Gi
+      storageClass: longhorn
+    database:
+      size: 1Gi
+      storageClass: longhorn
+    jobservice:
+      jobLog:
+        storageClass: longhorn
+    redis:
+      size: 1Gi
+      storageClass: longhorn
+    registry:
+      size: 1Gi
+      storageClass: longhorn
+    trivy:
+      size: 1Gi
+      storageClass: longhorn
+updateStrategy:
+  type: Recreate
+
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    certSource: secret
+    secret:
+      secretName: "harbor-cert"
+  ingress:
+    hosts:
+      core: harbor.rgov.xyz
+
+    controller: default
+    className: "nginx"
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"

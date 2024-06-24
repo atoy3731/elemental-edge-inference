@@ -1,0 +1,19 @@
+kind: GitRepo
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: elemental-rpi-cluster
+  namespace: fleet-local
+spec:
+  repo: git@github.com:atoy3731/elemental-edge-inference.git
+  branch: main
+  clientSecretName: private-key
+  targets:
+  - clusterSelector:
+      matchExpressions:
+      - key: provider.cattle.io
+        operator: NotIn
+        values:
+        - harvester
+  paths:
+  # Gitea Elemental Cluster
+  - "./infra/rpi-cluster"

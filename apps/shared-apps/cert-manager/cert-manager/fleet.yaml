@@ -1,0 +1,15 @@
+defaultNamespace: cert-manager
+
+labels:
+  app: cert-manager-cert-manager
+
+helm:
+  repo: https://charts.jetstack.io
+  chart: cert-manager
+  version: 1.8.0
+  releaseName: cert-manager
+
+dependsOn:
+  - selector:
+      matchLabels:
+        app: cert-manager-crds

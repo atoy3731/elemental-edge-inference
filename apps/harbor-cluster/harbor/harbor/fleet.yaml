@@ -1,0 +1,16 @@
+defaultNamespace: harbor
+helm:
+  repo: https://helm.goharbor.io
+  chart: harbor
+  version: 1.14.2
+  releaseName: harbor
+  valuesFiles:
+    - values.yaml
+
+dependsOn:
+- selector:
+    matchLabels:
+      app: harbor-certs
+- selector:
+    matchLabels:
+      app: elemental-longhorn

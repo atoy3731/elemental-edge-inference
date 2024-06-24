@@ -1,0 +1,9 @@
+defaultNamespace: harbor
+
+labels:
+  app: harbor-certs
+
+dependsOn:
+- selector:
+    matchLabels:
+      app: cert-manager-resources

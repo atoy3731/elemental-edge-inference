@@ -1,0 +1,23 @@
+# Default values for cert-manager-resources.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+certs: []
+# - name: example-cert
+#   namespace: example-namespace
+#   commonName: www.example.com
+#   secretName: example-cert
+#   dnsNames:
+#   - "*.example.com"
+#   issuerType: ClusterIssuer
+#   issuerName: example-issuer
+
+clusterIssuers: []
+# - name: example-cluster-issuer
+
+issuers: []
+# - name: example-issuer
+
+cloudflareApiTokens: []
+# - name: example-cloudflare-api-token
+#   apiToken: abcdef123456

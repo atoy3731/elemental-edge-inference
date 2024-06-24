@@ -1,0 +1,9 @@
+defaultNamespace: gitea
+
+labels:
+  app: gitea-certs
+
+dependsOn:
+- selector:
+    matchLabels:
+      app: cert-manager-resources

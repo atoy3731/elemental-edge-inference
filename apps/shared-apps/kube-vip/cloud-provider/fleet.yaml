@@ -1,0 +1,15 @@
+defaultNamespace: kube-system
+
+helm:
+  repo: https://kube-vip.github.io/helm-charts
+  chart: kube-vip-cloud-provider
+  version: 0.2.2
+  releaseName: elemental-kube-vip-cloud-provider
+
+labels:
+  app: elemental-kubevip-cloud-provider
+
+dependsOn:
+- selector:
+    matchLabels:
+      app: elemental-kube-vip

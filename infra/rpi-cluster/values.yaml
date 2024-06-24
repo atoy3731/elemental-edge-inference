@@ -1,0 +1,55 @@
+cloudprovider: elemental
+
+cloudCredentialSecretName: ""
+
+rancher:
+  cattle:
+    url: rancher.kube.lol
+
+cluster:
+  name: elemental-rpi-cluster
+  labels:
+    type: elemental
+    cluster: rpi
+    purpose: inference
+  config:
+    kubernetesVersion: v1.27.14+k3s1
+    localClusterAuthEndpoint:
+      enabled: false
+    globalConfig:
+      additionalManifests: ""
+      cni: "" # Use default 'flannel' for k3s
+      docker: false
+      disable_kube_proxy: false
+      etcd_expose_metrics: false
+      enableNetworkPolicy: true
+      profile: ''
+      selinux: false
+      secrets_encryption: false
+      write_kubeconfig_mode: 0600
+      use_service_account_credentials: false
+      protect_kernel_defaults: false
+      cloud_provider_name: '' # https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers
+
+      # EXPERIMENTAL: Embedded registry
+      embedded-registry: true
+
+    upgradeStrategy:
+      controlPlaneConcurrency: 10%
+      controlPlaneDrainOptions:
+        enabled: false
+      workerConcurrency: 10%
+      workerDrainOptions:
+        enabled: false
+
+# node and nodepool(s) values
+nodepools:
+  - name: elemental-rpi-main
+    quantity: 3
+    etcd: true
+    controlplane: true
+    worker: true
+    paused: false
+    selector:
+      matchLabels:
+        type: raspberry-pi # Update this to match your Elemental machine labels

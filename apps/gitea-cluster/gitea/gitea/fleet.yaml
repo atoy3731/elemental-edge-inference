@@ -1,0 +1,21 @@
+defaultNamespace: gitea
+
+labels:
+  app: gitea
+
+helm:
+  repo: https://dl.gitea.io/charts/
+  chart: gitea
+  version: 10.1.3
+  releaseName: gitea
+  takeOwnership: true
+  valuesFiles:
+    - values.yaml
+
+dependsOn:
+- selector:
+    matchLabels:
+      app: gitea-certs
+- selector:
+    matchLabels:
+      app: elemental-longhorn

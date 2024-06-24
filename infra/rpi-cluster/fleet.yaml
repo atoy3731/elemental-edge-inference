@@ -1,0 +1,16 @@
+defaultNamespace: default
+helm:
+  # chart: https://github.com/rancherfederal/rancher-cluster-templates/releases/download/rancher-cluster-templates-0.5.1/rancher-cluster-templates-0.5.1.tgz
+  chart: git::https://github.com/rancherfederal/rancher-cluster-templates.git//charts/cluster-templates?ref=main
+  releaseName: elemental-rpi-cluster
+  valuesFiles:
+    - values.yaml
+diff:
+   comparePatches:
+   - apiVersion: provisioning.cattle.io/v1
+     kind: Cluster
+     namespace: fleet-default
+     name: elemental-rpi-cluster
+     operations:
+     - {"op": "remove", "path": "/spec/localClusterAuthEndpoint"}
+     - {"op": "remove", "path": "/spec/rkeConfig"}

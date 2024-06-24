@@ -1,0 +1,18 @@
+kind: GitRepo
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: elemental-gitea
+  namespace: fleet-default
+spec:
+  repo: git@github.com:atoy3731/elemental-app-demo.git
+  branch: main
+  clientSecretName: private-key
+  targets:
+  - name: elemental-gitea
+    clusterSelector:
+      matchLabels:
+        cluster: elemental-gitea
+  paths:
+  # Harbor
+  - "./apps/gitea-cluster/gitea/certs"
+  - "./apps/gitea-cluster/gitea/gitea"

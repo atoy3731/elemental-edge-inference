@@ -1,0 +1,6 @@
+persistence:
+  defaultClass: true
+  defaultClassReplicaCount: 1
+  
+defaultSettings:
+  defaultDataPath: /opt

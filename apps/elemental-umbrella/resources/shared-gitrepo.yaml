@@ -1,0 +1,27 @@
+kind: GitRepo
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: elemental-shared-apps
+  namespace: fleet-default
+spec:
+  repo: git@github.com:atoy3731/elemental-app-demo.git
+  branch: main
+  clientSecretName: private-key
+  targets:
+  - name: elemental
+    clusterSelector:
+      matchLabels:
+        type: elemental
+  paths:
+  # Cert Manager
+  - "./apps/shared-apps/cert-manager/crds"
+  - "./apps/shared-apps/cert-manager/cert-manager"
+  - "./apps/shared-apps/cert-manager/resources"
+
+  # Longhorn
+  - "./apps/shared-apps/longhorn"
+
+  # KubeVIP
+  - "./apps/shared-apps/kube-vip/kube-vip"
+  - "./apps/shared-apps/kube-vip/cloud-provider"
+  - "./apps/shared-apps/kube-vip/cloud-provider-config"
